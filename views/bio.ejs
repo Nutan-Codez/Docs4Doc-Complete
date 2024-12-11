@@ -1,0 +1,184 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bio Information</title>
+    <link rel="stylesheet" href="../stylesheets/bio.css">
+</head>
+
+<body>
+    <div>
+        <h1>Enter Bio Information</h1>
+        <form action="/bio" method="POST">
+            <label for="doctor">Select Doctor:</label>
+            <select id="doctor" name="doctor" required>
+                <% doctors.forEach(doctor => { %>
+                    <option value="<%= doctor._id %>"><%= doctor.name %></option>
+                <% }); %>
+            </select>
+
+            <label for="dateOfBirth">Date of Birth:</label>
+            <input type="date" id="dateOfBirth" name="dateOfBirth" required>
+
+            <label for="aadharNumber">Aadhar Number:</label>
+            <input type="text" id="aadharNumber" name="aadharNumber" pattern="\d{12}" 
+                title="Aadhar Number should be 12 digits" required>
+
+            <label for="contactNumber">Contact Number:</label>
+            <input type="text" id="contactNumber" name="contactNumber" pattern="\d{10}" 
+                title="Contact Number should be 10 digits" required>
+
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</body>
+
+</html> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bio Information</title>
+    <!-- <link rel="stylesheet" href="../stylesheets/bio.css"> -->
+    <style>
+        /* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #c7e2ff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    background-color: #fff6f6;
+    padding: 30px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    width: 400px;
+    max-width: 100%;
+}
+
+h1 {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    text-align: center;
+    color: #264f7a;
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+.bio-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 5px;
+}
+
+select, input {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+select:focus, input:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+button.submit-btn {
+    background-color: #264f7a;
+    color: white;
+    padding: 12px;
+    width: 200px;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button.submit-btn:hover {
+    background-color: #a6d1ff;
+    color: #264f7a;
+    border: solid 2px #264f7a;
+}
+
+button.submit-btn:focus {
+    outline: none;
+}
+
+input[type="text"]:invalid, select:invalid {
+    border-color: red;
+}
+
+input[type="text"]:valid, select:valid {
+    border-color: green;
+}
+.submit-group {
+    display: flex;
+    justify-content: center; /* This will center the submit button */
+    margin-top: 20px;
+}
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Enter Your Bio Information</h1><br>
+        <form action="/bio" method="POST" class="bio-form">
+            <div class="form-group">
+                <label for="doctor">Select Doctor:</label>
+                <select id="doctor" name="doctor" required>
+                    <% doctors.forEach(doctor => { %>
+                        <option value="<%= doctor._id %>"><%= doctor.name %></option>
+                    <% }); %>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="dateOfBirth">Date of Birth:</label>
+                <input type="date" id="dateOfBirth" name="dateOfBirth" required>
+            </div>
+
+            <div class="form-group">
+                <label for="aadharNumber">Aadhar Number:</label>
+                <input type="text" id="aadharNumber" name="aadharNumber" pattern="\d{12}" title="Aadhar Number should be 12 digits" required>
+            </div>
+
+            <div class="form-group">
+                <label for="contactNumber">Contact Number:</label>
+                <input type="text" id="contactNumber" name="contactNumber" pattern="\d{10}" title="Contact Number should be 10 digits" required>
+            </div>
+
+            <div class="form-group submit-group">
+                <button type="submit" class="submit-btn">Submit</button>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>

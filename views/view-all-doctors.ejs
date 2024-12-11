@@ -1,0 +1,315 @@
+
+<!-- view-all-doctors.ejs -->
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>View All Doctors</title>
+  <style>
+    table {
+    width: 100%;
+    border-collapse: collapse;
+    }
+    th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+    }
+    th {
+    background-color: #f4f4f4;
+    }
+    button {
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    }
+    button:hover {
+    background-color: #e60000;
+    }
+</style>
+</head>
+<body>
+  <h1>All Doctors</h1>
+
+  <% if (doctors && doctors.length > 0) { %>
+    <table>
+      <thead>
+        <tr>
+          <th>Profile</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Phone Number</th>
+          <th>Remove Doctor</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% doctors.forEach(doctor => { %>
+          <tr>
+            <td> 
+              <img src="/images/uploads/<%= doctor.picture %>" alt="<%= doctor.name %>" width="50" height="50">
+            </td>
+            <td><%= doctor.name %></td>
+            <td><%= doctor.email %></td>
+            <td><%= doctor.phoneNo %></td>
+            <td>
+                <!-- Delete Doctor Button -->
+                <!-- <form action="/delete-doctor/<%= doctor._id %>" method="POST" style="display:inline;">
+                  <button type="submit" onclick="return confirm('Are you sure you want to delete this doctor?')">Delete</button>
+                </form>
+                
+
+                
+                
+              </td>
+          </tr>
+        <% }); %>
+      </tbody>
+    </table>
+  <% } else { %>
+    <p>No doctors found.</p>
+  <% } %>
+</body>
+</html> --> 
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>View All Doctors</title>
+  <style>
+    /* General Styles */
+    body {
+      font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+      background-color: #b3dfff;
+      color: #333;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    h1 {
+      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+      text-align: center;
+      color: #174566;
+      margin-bottom: 20px;
+      font-size: 28px;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      padding: 20px;
+      background-color: #daf0ff;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      margin: 20px;
+    }
+
+    /* Table Styles */
+    table {
+      width: 85%;
+      margin: 0 auto;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    th, td {
+      padding: 12px;
+      text-align: left;
+      border: 1px solid #ddd;
+    }
+
+    th {
+      background-color: #f4f4f4;
+      color: #444;
+      font-weight: bold;
+    }
+
+    td {
+      background-color: #fafafa;
+    }
+
+    td:first-child {
+      width: 12%; /* Make the profile column smaller */
+      text-align: center;
+    }
+
+    /* Center Delete button */
+    td:last-child {
+      display: flex;
+      justify-content: center; /* Center the delete button horizontally */
+      align-items: center;
+      min-height: 60px;
+    }
+
+    tr:nth-child(even) td {
+      background-color: #f9f9f9;
+    }
+
+    td img {
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    /* Button Styles */
+    button {
+      background-color: #ff4d4d;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      cursor: pointer;
+      border-radius: 4px;
+      transition: background-color 0.5s ease;
+    }
+
+    button:hover {
+      background-color: #00cc99;
+    }
+
+    button:focus {
+      outline: none;
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+      body {
+        flex-direction: column;
+        justify-content: flex-start;
+        padding: 20px;
+      }
+
+      h1 {
+        font-size: 24px;
+      }
+
+      .container {
+        width: 100%;
+        margin-top: 10px;
+      }
+
+      table {
+        font-size: 14px;
+        width: 100%;
+        border-spacing: 0;
+      }
+
+      td, th {
+        padding: 10px;
+      }
+
+      td:first-child {
+        width: 20%; /* Give more space for the profile column on smaller screens */
+      }
+
+      td:last-child {
+        width: 25%; /* Adjust delete button column width */
+      }
+
+      button {
+        padding: 6px 12px;
+        font-size: 12px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 22px;
+      }
+
+      table {
+        font-size: 12px;
+      }
+
+      td, th {
+        padding: 8px;
+      }
+
+      td:first-child {
+        width: 25%; /* More space for profile image */
+      }
+
+      td:last-child {
+        width: 85%; /* More space for the delete button */
+      }
+
+      button {
+        padding: 5px 10px;
+        font-size: 10px;
+      }
+    }
+
+    /* Scrollable Table for Mobile */
+    @media (max-width: 600px) {
+      table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+      }
+
+      td, th {
+        white-space: nowrap;
+      }
+    }
+
+    /* Empty State */
+    .empty-state {
+      text-align: center;
+      font-size: 18px;
+      color: #888;
+      padding: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>ALL DOCTORS</h1><br>
+
+    <% if (doctors && doctors.length > 0) { %>
+      <table>
+        <thead>
+          <tr>
+            <th>PROFILE</th>
+            <th>NAME</th>
+            <th>EMAIL</th>
+            <th>PHONE NUMBER</th>
+            <th>REMOVE DOCTOR</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% doctors.forEach(doctor => { %>
+            <tr>
+              <td>
+                <img src="/images/uploads/<%= doctor.picture %>" alt="<%= doctor.name %>" width="50" height="50">
+              </td>
+              <td><%= doctor.name %></td>
+              <td><%= doctor.email %></td>
+              <td><%= doctor.phoneNo %></td>
+              <td>
+                <!-- Delete Doctor Button -->
+                <form action="/delete-doctor/<%= doctor._id %>" method="POST" style="display:inline;">
+                  <button type="submit" onclick="return confirm('Are you sure you want to delete this doctor?')">Delete</button>
+                </form>
+              </td>
+            </tr>
+          <% }); %>
+        </tbody>
+      </table>
+    <% } else { %>
+      <div class="empty-state">
+        <p>No doctors found.</p>
+      </div>
+    <% } %>
+  </div>
+</body>
+</html>
+
+
