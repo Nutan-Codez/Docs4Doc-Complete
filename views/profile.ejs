@@ -7,6 +7,52 @@
     <title>Document</title>
     <link rel="stylesheet" href="../stylesheets/profile.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        /* General Flexbox Layout for user-info-bar2 */
+/* Flexbox for evenly distributing sections */
+.abc {
+    display: flex;
+    justify-content: space-between; /* Space out items evenly */
+    align-items: center;
+    padding: 20px;
+    margin-bottom: 20px;
+    background-color: var(--bc-darker);
+}
+
+/* Each section (REPORT, ALLERGIES, BIO) should take equal space */
+.abc1, .abc3, .abc5 {
+    flex: 1; /* Ensure they all take equal space */
+    margin: 0 10px; /* Add margin to space them out slightly */
+    padding: 10px;
+    text-align: center;
+    background-color: #333; /* Optional for background contrast */
+    border-radius: 8px; /* Optional for rounded corners */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Specific Styles for headings */
+.abc1 h3, .abc3 h3, .abc5 h3 {
+    color: #4dffe4;
+    font-size: 18px;
+    font-weight: bold;
+    margin: 0;
+    padding: 10px 0;
+}
+
+/* Hover effect to highlight sections */
+.abc1:hover, .abc3:hover, .abc5:hover {
+    background-color: #444; /* Change background color on hover */
+    cursor: pointer;
+}
+
+/* Additional styling for sections with more content */
+.abc2 {
+    flex-grow: 1; /* Ensure it takes up remaining space */
+}
+
+    </style>
 
 </head>
 
@@ -50,7 +96,7 @@
 
             <div class="menu-sec">
                 <ul class="menu-links">
-
+                    
                     <li class="menu-link"><a style="text-decoration: none; color:#ffffff;" class="menu-link-icon" href="/profile?state=0"><i
                                 class="uil uil-folder-open"></i>Report</a></li>
                     <li class="menu-link"><a style="text-decoration: none; color:#ffffff;" class="menu-link-icon" href="/profile?state=2"><i
@@ -126,7 +172,7 @@
                 </div>
             </div>
         </div>
-        <div class="user-info-bar2">
+        <!-- <div class="user-info-bar2">
             <a href="/profile?state=0" class="ufo-bar2-col1" style="text-decoration: none;">
                 <div class="ufo-bar2-col1-inner flexbox">
                     <h3 style="color:#4dffe4;">REPORTS</h3>
@@ -135,7 +181,7 @@
 
             <div class="ufo-bar2-col2 ufo-bar2-block">
                 <!-- Content for Videos -->
-            </div>
+            <!-- </div>
 
             <a href="/profile?state=2" class="ufo-bar2-col3 ufo-bar2-block" style="text-decoration: none;">
                 <div class="ufo-bar2-col3-inner flexbox">
@@ -145,14 +191,57 @@
 
             <div class="ufo-bar2-col4 ufo-bar2-block">
                 <!-- Content for Playlists -->
-            </div>
+            <!-- </div>
 
             <a href="/profile?state=1" class="ufo-bar2-col5" style="text-decoration: none;">
                 <div class="ufo-bar2-col5-inner flexbox">
                     <h3 style="color: #4dffe4;">BIO</h3>
                 </div>
             </a>
-        </div>
+        </div> --> 
+
+
+
+
+
+
+        <div class="abc">
+
+            <a href="/profile?state=0" class="abc1" style="text-decoration: none;">
+                <div class="abc1-inner ">
+                    <h3 style="color:#4dffe4;">REPORTS</h3>
+                </div>
+            </a>
+        
+            <div class="ufo-bar2-col2 ufo-bar2-block">
+                <!-- Content for Videos -->
+            </div> 
+        
+            <a href="/profile?state=2" class="abc3 " style="text-decoration: none;">
+                <div class="abc3-inner ">
+                    <h3 style="color:#4dffe4;">ALLERGIES</h3>
+                </div>
+            </a>
+        
+            <div class="ufo-bar2-col4 ufo-bar2-block">
+                <!-- Content for Playlists -->
+            </div>
+        
+            <a href="/profile?state=1" class="abc5" style="text-decoration: none;">
+                <div class="abc5-inner ">
+                    <h3 style="color: #4dffe4;">BIO</h3>
+                </div>
+            </a>
+        </div> 
+
+
+
+
+
+
+
+
+
 
         <div class="user-info-block" id="dynamic-content">
             <!-- Conditionally include partials based on state -->

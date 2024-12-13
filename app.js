@@ -15,10 +15,10 @@ var app = express();
 
 
 // Serve static files like images from the 'public' folder
-app.use('/uploads', express.static('public/images/uploads'));
-const methodOverride = require('method-override');
-app.use(methodOverride('_method'));
-app.use(express.static(path.join(__dirname, 'public')));
+// app.use('/uploads', express.static('public/images/uploads'));
+// const methodOverride = require('method-override');
+// app.use(methodOverride('_method'));
+// app.use(express.static(path.join(__dirname, 'public')));
 
 
 
